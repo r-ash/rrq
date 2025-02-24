@@ -220,7 +220,7 @@ rrq_heartbeat_kill <- function(con, key, signal = tools::SIGTERM) {
 }
 
 heartbeat_key_kill <- function(key) {
-  paste0(key, ":kill")
+  sprintf("{%s}:kill", key)
 }
 
 

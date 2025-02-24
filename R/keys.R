@@ -44,23 +44,23 @@ rrq_keys <- function(queue_id) {
 
 ## Special key for worker-specific commands to be published to.
 rrq_key_worker_message <- function(queue, worker) {
-  sprintf("%s:worker:%s:message", queue, worker)
+  sprintf("{%s}:worker:%s:message", queue, worker)
 }
 
 rrq_key_worker_response <- function(queue, worker) {
-  sprintf("%s:worker:%s:response", queue, worker)
+  sprintf("{%s}:worker:%s:response", queue, worker)
 }
 
 rrq_key_worker_log <- function(queue, worker) {
-  sprintf("%s:worker:%s:log", queue, worker)
+  sprintf("{%s}:worker:%s:log", queue, worker)
 }
 
 rrq_key_worker_heartbeat <- function(queue, worker) {
-  sprintf("%s:worker:%s:heartbeat", queue, worker)
+  sprintf("{%s:worker:%s:heartbeat}", queue, worker)
 }
 
 rrq_key_queue <- function(queue, name) {
-  sprintf("%s:queue:%s", queue, name %||% QUEUE_DEFAULT)
+  sprintf("{%s}:queue:%s", queue, name %||% QUEUE_DEFAULT)
 }
 
 ## (Potentially) randomly generated keys:
@@ -69,13 +69,13 @@ rrq_key_task_complete <- function(queue, id = NULL) {
 }
 
 rrq_key_task_depends_up <- function(queue_id, task_id) {
-  sprintf("%s:task:%s:depends:up", queue_id, task_id)
+  sprintf("{%s:task}:%s:depends:up", queue_id, task_id)
 }
 
 rrq_key_task_depends_up_original <- function(queue_id, task_id) {
-  sprintf("%s:task:%s:depends:up:original", queue_id, task_id)
+  sprintf("{%s:task}:%s:depends:up:original", queue_id, task_id)
 }
 
 rrq_key_task_depends_down <- function(queue_id, task_id) {
-  sprintf("%s:task:%s:depends:down", queue_id, task_id)
+  sprintf("{%s:task}:%s:depends:down", queue_id, task_id)
 }
